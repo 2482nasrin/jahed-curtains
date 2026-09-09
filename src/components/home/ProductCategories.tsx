@@ -10,19 +10,19 @@ const categories = [
     title: "Curtains & Drapes",
     subtitle: "Sheer, day & night and wave styles",
     image: "/images/curtain-1.png",
-    link: "/products/curtains-drapes",
+    link: "/products?category=curtains-drapes",
   },
   {
     title: "Blinds & Shades",
     subtitle: "Roller, roman, zebra & wooden",
     image: "/images/curtain-2.png",
-    link: "/products/blinds-shades",
+    link: "/products?category=blinds-shades",
   },
   {
     title: "Motorized",
     subtitle: "Smart curtain systems",
     image: "/images/curtain-3.png",
-    link: "/products/motorized",
+    link: "/products?category=motorized",
   },
 ];
 

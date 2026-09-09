@@ -39,14 +39,14 @@ export default function RecentWorkSection() {
     { id: 24, category: "Carpet", image: "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=800&q=80" },
 
     // Furniture (8 items)
-    { id: 25, category: "Furniture", image: "https://images.unsplash.com/photo-1538688525198-9b88f6f53126?auto=format&fit=crop&w=800&q=80" },
-    { id: 26, category: "Furniture", image: "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=800&q=80" },
-    { id: 27, category: "Furniture", image: "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80" },
-    { id: 28, category: "Furniture", image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=800&q=80" },
-    { id: 29, category: "Furniture", image: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=800&q=80" },
-    { id: 30, category: "Furniture", image: "https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?auto=format&fit=crop&w=800&q=80" },
-    { id: 31, category: "Furniture", image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80" },
-    { id: 32, category: "Furniture", image: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=800&q=80" },
+    { id: 25, category: "Furniture", image: "furniture/furniture-5.jpeg" },
+    { id: 26, category: "Furniture", image: "furniture/furniture-2.jpeg" },
+    { id: 27, category: "Furniture", image: "furniture/furniture-3.jpeg" },
+    { id: 28, category: "Furniture", image: "furniture/furniture-7.jpeg" },
+    { id: 29, category: "Furniture", image: "furniture/furniture-1.jpeg" },
+    { id: 30, category: "Furniture", image: "furniture/furniture-8.jpeg" },
+    { id: 31, category: "Furniture", image: "furniture/furniture-6.png"  },
+    { id: 32, category: "Furniture", image: "furniture/furniture-4.jpeg" },
   ];
 
   const filteredItems = workItems.filter((item) => item.category === activeTab);

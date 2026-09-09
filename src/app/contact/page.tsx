@@ -5,6 +5,9 @@ import { FiPhoneCall, FiMail, FiMapPin } from "react-icons/fi";
 import { FaWhatsapp } from "react-icons/fa";
 
 const WHATSAPP_NUMBER = "971547839880";
+const BOOKING_WHATSAPP_TEXT = encodeURIComponent(
+  "Hello Jahed Curtains! I'd like to book a free home visit for curtains or blinds."
+);
 const PHONE_DISPLAY = "+971 54 783 9880";
 const EMAIL = "zaheedfeni47@gmail.com";
 const EMIRATES = ["Dubai", "Sharjah", "Abu Dhabi"];
@@ -220,7 +223,7 @@ export default function ContactPage() {
               </a>
 
               <a
-                href={`https://wa.me/${WHATSAPP_NUMBER}`}
+                href={`https://wa.me/${WHATSAPP_NUMBER}?text=${BOOKING_WHATSAPP_TEXT}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block bg-white border border-gray-200 rounded-2xl p-6 text-center hover:border-[#9c1b63] hover:shadow-md transition-all"

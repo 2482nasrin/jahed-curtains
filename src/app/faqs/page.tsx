@@ -4,6 +4,8 @@ import { useState } from "react";
 import Link from "next/link";
 import { HiChevronDown } from "react-icons/hi";
 
+const FAQ_WHATSAPP_TEXT = encodeURIComponent("Hello Jahed Curtains! I have a question.");
+
 const FAQS = [
   {
     question: "What is the best window curtain solution for blocking sunlight & heat?",
@@ -69,7 +71,7 @@ export default function FaqsPage() {
             Everything customers usually ask before booking. Can&apos;t find
             your answer?{" "}
             <a
-              href="https://wa.me/971551693931"
+              href={`https://wa.me/971547839880?text=${FAQ_WHATSAPP_TEXT}`}
               target="_blank"
               rel="noopener noreferrer"
               className="text-[#9c1b63] font-semibold hover:underline"
@@ -83,7 +85,7 @@ export default function FaqsPage() {
 
       {/* FAQ Accordion */}
       <section className="py-14 sm:py-20">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 space-y-3">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-3">
           {FAQS.map((faq, index) => {
             const isOpen = openIndex === index;
             return (

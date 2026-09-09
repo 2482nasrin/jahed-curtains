@@ -1,14 +1,23 @@
 "use client";
 
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { FaArrowRight } from "react-icons/fa";
 import { HiPlay } from "react-icons/hi";
 import { products, productCategories, ProductCategory } from "@/data/products";
 
-export default function ProductsPage() {
-  const [activeCategory, setActiveCategory] = useState<ProductCategory | "all">("all");
+function isProductCategory(value: string | null): value is ProductCategory {
+  return productCategories.some((category) => category.key === value);
+}
+
+function ProductsPageContent() {
+  const searchParams = useSearchParams();
+  const categoryParam = searchParams.get("category");
+  const [activeCategory, setActiveCategory] = useState<ProductCategory | "all">(
+    isProductCategory(categoryParam) ? categoryParam : "all"
+  );
 
   const filteredProducts =
     activeCategory === "all"
@@ -105,5 +114,13 @@ export default function ProductsPage() {
         </div>
       </section>
     </main>
+  );
+}
+
+export default function ProductsPage() {
+  return (
+    <Suspense fallback={null}>
+      <ProductsPageContent />
+    </Suspense>
   );
 }

@@ -5,6 +5,11 @@ import Link from "next/link";
 import { FaCheckCircle, FaWhatsapp, FaShieldAlt, FaRulerCombined, FaSwatchbook, FaTools } from "react-icons/fa";
 import { MdPayment } from "react-icons/md";
 
+const BOOKING_WHATSAPP_TEXT = encodeURIComponent(
+  "Hello Jahed Curtains! I'd like to book a free home visit for curtains or blinds."
+);
+const GENERAL_WHATSAPP_TEXT = encodeURIComponent("Hello Jahed Curtains! I have a question.");
+
 export default function HeroSection() {
   return (
     <section className="relative w-full min-h-[90vh] flex flex-col justify-between overflow-hidden">
@@ -64,7 +69,7 @@ export default function HeroSection() {
               BOOK A FREE VISIT
             </button>
             <a
-              href="https://wa.me/971547839880"
+              href={`https://wa.me/971547839880?text=${BOOKING_WHATSAPP_TEXT}`}
               target="_blank"
               rel="noopener noreferrer"
               className="bg-[#22c55e] hover:bg-[#1ea34d] text-white font-bold px-8 py-3.5 rounded-full shadow-lg transition flex items-center justify-center space-x-2 text-sm uppercase tracking-wider"
@@ -117,7 +122,7 @@ export default function HeroSection() {
 
       {/* Floating WhatsApp Button on Bottom Right */}
       <a
-        href="https://wa.me/971547839880"
+        href={`https://wa.me/971547839880?text=${GENERAL_WHATSAPP_TEXT}`}
         target="_blank"
         rel="noopener noreferrer"
         className="fixed bottom-6 right-6 z-50 bg-[#22c55e] hover:bg-[#1ea34d] text-white p-4 rounded-full shadow-2xl transition transform hover:scale-110 flex items-center justify-center"

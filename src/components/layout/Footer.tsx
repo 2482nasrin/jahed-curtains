@@ -4,6 +4,11 @@ import Link from "next/link";
 import { FiPhoneCall, FiMail, FiMapPin } from "react-icons/fi";
 import { FaInstagram, FaWhatsapp } from "react-icons/fa";
 
+const BOOKING_WHATSAPP_TEXT = encodeURIComponent(
+  "Hello Jahed Curtains! I'd like to book a free home visit for curtains or blinds."
+);
+const AREA_WHATSAPP_TEXT = encodeURIComponent("Hello Jahed Curtains! Do you cover my area?");
+
 export default function Footer() {
   return (
     <footer className="bg-[#1C1C1C] text-gray-300 border-t border-gray-800">
@@ -33,7 +38,7 @@ export default function Footer() {
               </Link>
 
               <a
-                href="https://whatsapp.com"
+                href={`https://wa.me/971547839880?text=${BOOKING_WHATSAPP_TEXT}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-[#1c1c1c] text-white hover:bg-black font-bold px-6 py-3.5 rounded-full shadow-md text-sm sm:text-base flex items-center space-x-2 transition-all duration-300 transform hover:-translate-y-0.5"
@@ -184,7 +189,7 @@ export default function Footer() {
                   </a>
                 </li>
                 <li>
-                  <a href="https://whatsapp.com" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-3 hover:text-[#9c1b63] transition-colors">
+                  <a href={`https://wa.me/971547839880?text=${AREA_WHATSAPP_TEXT}`} target="_blank" rel="noopener noreferrer" className="flex items-center space-x-3 hover:text-[#9c1b63] transition-colors">
                     <FaWhatsapp className="text-[#25D366] text-lg flex-shrink-0" />
                     <span>WhatsApp us</span>
                   </a>

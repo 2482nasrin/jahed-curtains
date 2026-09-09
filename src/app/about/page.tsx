@@ -3,6 +3,8 @@ import Link from "next/link";
 import { FiMapPin } from "react-icons/fi";
 import { HiCheckCircle } from "react-icons/hi";
 
+const AREA_WHATSAPP_TEXT = encodeURIComponent("Hello Jahed Curtains! Do you cover my area?");
+
 const complimentaryServices = [
   { image: "/images/work-installation-team.png", label: "Free Home Visit" },
   { image: "/products/Organza-Queer.png", label: "Complimentary Samples Delivery" },
@@ -267,7 +269,7 @@ export default function AboutPage() {
             <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
               Not sure if we cover your community?{" "}
               <a
-                href="https://wa.me/971551693931"
+                href={`https://wa.me/971547839880?text=${AREA_WHATSAPP_TEXT}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-[#9c1b63] font-semibold hover:underline"

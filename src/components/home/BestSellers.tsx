@@ -5,193 +5,35 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { FaArrowRight } from "react-icons/fa";
+import { products, ProductCategory } from "@/data/products";
 
-// ট্যাব ডাটা (Curtains এবং Blinds - প্রতিটিতে ৬টি করে কার্ড)
-const tabsData = {
-  curtains: [
-    {
-      id: 1,
-      badge: "CURTAINS & DRAPES",
-      title: "Sheer & Blackout Curtains",
-      description: "The complete window: airy sheers for daytime, full blackout for night — two layers on one neat track.",
-      link: "/products/sheer-blackout",
-      images: [
-        "/products/sheer-blackout-curtains.png",
-        "/products/Office-Curtain.png",
-        "/products/Sheer-Curtains.png",
-      ],
-    },
-    {
-      id: 2,
-      badge: "CURTAINS & DRAPES",
-      title: "Sheer Curtains",
-      description: "Soft, light-filtering panels that keep your view and your privacy — the UAE living-room essential.",
-      link: "/products/sheer-curtains",
-      images: [
-        "/products/curtains.png",
-        "/products/t13.png",
-        "/products/t15.png",
-      ],
-    },
-    {
-      id: 3,
-      badge: "CURTAINS & DRAPES",
-      title: "Wave Curtains",
-      description: "The heading style from the design magazines — fabric that falls in smooth, even S-folds, in sheer, blackout or both.",
-      link: "/products/wave-curtains",
-      images: [
-        "/products/wave-curtains.png",
-        "/products/t14.png",
-        "/products/Hotel-Curtains-Near-me.png",
-      ],
-    },
-    {
-      id: 4,
-      badge: "CURTAINS & DRAPES",
-      title: "Pinch Pleat Curtains",
-      description: "Classic and elegant design featuring tailored folds at the top for a traditional luxurious look.",
-      link: "/products/pinch-pleat-curtains",
-      images: [
-        "/products/sheer-curtains2.png",
-        "/products/Sheer-Gold-Fabric.png",
-        "/products/Organza-Malax-Sheer.png",
-      ],
-    },
-    {
-      id: 5,
-      badge: "CURTAINS & DRAPES",
-      title: "Eyelet Ring Curtains",
-      description: "Modern metal rings built into the fabric header for smooth sliding and soft, uniform folds.",
-      link: "/products/eyelet-curtains",
-      images: [
-        "/products/Linen-Organza-Queer.png",
-        "/products/Organza-Queer.png",
-        "/products/Organza-Queer-Linen.png",
-      ],
-    },
-    {
-      id: 6,
-      badge: "CURTAINS & DRAPES",
-      title: "Motorized Drapes",
-      description: "Smart automated curtain tracks controllable via remote, smartphone app, or home automation systems.",
-      link: "/products/motorized-drapes",
-      images: [
-        "/products/Pale-Gold-Silk-Window-Curtain.png",
-        "/products/Pale-Gold-Silk-Window-Curtains.png",
-        "/products/Pale-Gold-Silk-Window-Curtain-FAbric.png",
-      ],
-    },
-  ],
-  blinds: [
-    {
-      id: 7,
-      badge: "BLINDS & SHADES",
-      title: "Roller Blinds",
-      description: "Sleek, minimal, and highly functional light control for modern apartments and offices across Dubai.",
-      link: "/products/roller-blinds",
-      images: [
-        "/images/curtain-2.jpg",
-        "/images/curtain-3.jpg",
-        "/images/curtain-1.jpg",
-      ],
-    },
-    {
-      id: 8,
-      badge: "BLINDS & SHADES",
-      title: "Zebra Blinds",
-      description: "Alternating sheer and solid fabric strips giving you versatile privacy and stylish light filtering.",
-      link: "/products/zebra-blinds",
-      images: [
-        "/images/curtain-1.jpg",
-        "/images/curtain-3.jpg",
-        "/images/curtain-2.jpg",
-      ],
-    },
-    {
-      id: 9,
-      badge: "BLINDS & SHADES",
-      title: "Wooden Blinds",
-      description: "Natural warmth and sophisticated texture crafted from premium wood for timeless interior elegance.",
-      link: "/products/wooden-blinds",
-      images: [
-        "/products/zebra-blinds-dubai.png",
-        "/products/Kitchen-Curtains.png",
-        "/products/Belroses-Embroidered-Linen-Kitchen-Curtains.png",
-      ],
-    },
-    {
-      id: 10,
-      badge: "BLINDS & SHADES",
-      title: "Roman Blinds",
-      description: "Soft fabric folds that stack neatly when raised, bringing a cozy and premium touch to windows.",
-      link: "/products/roman-blinds",
-      images: [
-        "/images/curtain-1.jpg",
-        "/images/curtain-2.jpg",
-        "/images/curtain-3.jpg",
-      ],
-    },
-    {
-      id: 11,
-      badge: "BLINDS & SHADES",
-      title: "Vertical Blinds",
-      description: "Ideal for large sliding glass doors and wide windows, offering effortless light adjustment.",
-      link: "/products/vertical-blinds",
-      images: [
-        "/images/curtain-2.jpg",
-        "/images/curtain-1.jpg",
-        "/images/curtain-3.jpg",
-      ],
-    },
-    {
-      id: 12,
-      badge: "BLINDS & SHADES",
-      title: "Venetian Aluminium Blinds",
-      description: "Durable metallic slats providing precise light tilting and contemporary corporate or home aesthetics.",
-      link: "/products/venetian-blinds",
-      images: [
-        "/images/curtain-3.jpg",
-        "/images/curtain-1.jpg",
-        "/images/curtain-2.jpg",
-      ],
-    },
-  ],
-};
+const TABS: { key: "curtains" | "blinds"; categories: ProductCategory[] }[] = [
+  { key: "curtains", categories: ["curtains-drapes", "motorized"] },
+  { key: "blinds", categories: ["blinds-shades"] },
+];
 
 export default function BestSellers() {
   const router = useRouter();
   const [activeTab, setActiveTab] = useState<"curtains" | "blinds">("curtains");
+  const [selectedImages, setSelectedImages] = useState<{ [slug: string]: string }>({});
 
-  // প্রতি কার্ডের সিলেক্টেড ইমেজ ট্র্যাক করার স্টেট (১২টি আইডির জন্য)
-  const [selectedImages, setSelectedImages] = useState<{ [key: number]: string }>({
-    1: "/products/sheer-blackout-curtains.png",
-    2: "/products/curtains.png",
-    3: "/products/wave-curtains.png",
-    4: "/products/sheer-curtains2.png",
-    5: "/products/Linen-Organza-Queer.png",
-    6: "/products/Pale-Gold-Silk-Window-Curtain.png",
-    7: "/products/White-Door-Curtain.png",
-    8: "/products/roman-blinds-dubai.png",
-    9: "/products/zebra-blinds-dubai.png",
-    10: "/products/blinds4.png",
-    11: "/products/blinds5.png",
-    12: "/products/blinds6.png",
-  });
-
-  const handleImageSelect = (e: React.MouseEvent, cardId: number, imgPath: string) => {
-    e.stopPropagation(); // থাম্বনেইলে ক্লিক করলে যেন পুরো কার্ডের লিংকে রিডাইরেক্ট না হয়ে শুধু ছবি বদলায়
+  const handleImageSelect = (e: React.MouseEvent, slug: string, imgPath: string) => {
+    e.stopPropagation(); // থাম্বনেইলে ক্লিক করলে যেন পুরো কার্ডের লিংকে রিডাইরেক্ট না হয়ে শুধু ছবি বদলায়
     setSelectedImages((prev) => ({
       ...prev,
-      [cardId]: imgPath,
+      [slug]: imgPath,
     }));
   };
 
-  const currentProducts = tabsData[activeTab];
+  const activeCategories = TABS.find((tab) => tab.key === activeTab)!.categories;
+  const currentProducts = products.filter((product) =>
+    activeCategories.includes(product.category)
+  );
 
   return (
     <section className="py-16 sm:py-14 bg-[#FAF9F6]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         {/* Header & Tabs */}
         <div className="text-center max-w-2xl mx-auto mb-12">
           <p className="text-xs sm:text-sm font-bold tracking-widest text-[#9C1B63] uppercase mb-2">
@@ -229,12 +71,13 @@ export default function BestSellers() {
         {/* Product Cards Grid (6 Products -> 3 Columns Grid) */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-14">
           {currentProducts.map((product) => {
-            const activeImg = selectedImages[product.id] || product.images[0];
+            const activeImg = selectedImages[product.slug] || product.images[0];
+            const link = `/products/${product.slug}`;
 
             return (
               <div
-                key={product.id}
-                onClick={() => router.push(product.link)}
+                key={product.slug}
+                onClick={() => router.push(link)}
                 className="bg-white rounded-3xl overflow-hidden shadow-md border border-gray-100 flex flex-col justify-between transition duration-300 hover:shadow-xl cursor-pointer group"
               >
                 {/* Image Container with Badge & Thumbnails */}
@@ -243,6 +86,7 @@ export default function BestSellers() {
                     src={activeImg}
                     alt={product.title}
                     fill
+                    sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
                     className="object-cover transition-all duration-500 group-hover:scale-105"
                   />
 
@@ -257,7 +101,7 @@ export default function BestSellers() {
                       {product.images.map((img, idx) => (
                         <button
                           key={idx}
-                          onClick={(e) => handleImageSelect(e, product.id, img)}
+                          onClick={(e) => handleImageSelect(e, product.slug, img)}
                           className={`relative w-7 h-7 rounded-full overflow-hidden border-2 transition ${
                             activeImg === img ? "border-[#9C1B63] scale-110" : "border-transparent opacity-70 hover:opacity-100"
                           }`}
@@ -282,7 +126,7 @@ export default function BestSellers() {
 
                   {/* View Details Link */}
                   <Link
-                    href={product.link}
+                    href={link}
                     className="inline-flex items-center space-x-2 text-sm font-bold text-[#9C1B63] hover:text-[#731249] transition"
                   >
                     <span>VIEW DETAILS</span>
