@@ -4,9 +4,9 @@ import { useState } from "react";
 import { FiPhoneCall, FiMail, FiMapPin } from "react-icons/fi";
 import { FaWhatsapp } from "react-icons/fa";
 
-const WHATSAPP_NUMBER = "971551693931";
-const PHONE_DISPLAY = "+971 55 169 3931";
-const EMAIL = "info@jahedcurtains.ae";
+const WHATSAPP_NUMBER = "971547839880";
+const PHONE_DISPLAY = "+971 54 783 9880";
+const EMAIL = "zaheedfeni47@gmail.com";
 const EMIRATES = ["Dubai", "Sharjah", "Abu Dhabi"];
 const INTERESTS = [
   "Not sure yet - advise me",

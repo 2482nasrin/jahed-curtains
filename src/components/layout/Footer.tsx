@@ -74,16 +74,16 @@ export default function Footer() {
               
               <p className="text-sm text-gray-400 leading-relaxed">
                 Made-to-measure curtains and blinds for homes and offices across the UAE. Free home visit, free measurement, and installation by our own team - with no advance payment.
-              </p>
+                </p>
               
               <div className="pt-2">
                 <a
-                  href="https://instagram.com"
+                  href="https://www.instagram.com/jahid_curtains/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 bg-gray-800 hover:bg-[#9c1b63] text-white rounded-full flex items-center justify-center transition-colors duration-300"
+                  className="w-10 h-10 bg-white  bg-gray-800 hover:bg-[#9c1b63] text-white rounded-full flex items-center justify-center transition-colors duration-300"
                 >
-                  <FaInstagram className="text-lg" />
+                  <FaInstagram className="text-lg text-[#9c1b63] hover:text-white" />
                 </a>
               </div>
             </div>
@@ -178,9 +178,9 @@ export default function Footer() {
               </h3>
               <ul className="space-y-4 text-sm">
                 <li>
-                  <a href="tel:+971551693931" className="flex items-center space-x-3 hover:text-[#9c1b63] transition-colors">
+                  <a href="tel:+971547839880" className="flex items-center space-x-3 hover:text-[#9c1b63] transition-colors">
                     <FiPhoneCall className="text-[#9c1b63] text-lg flex-shrink-0" />
-                    <span>+971 55 169 3931</span>
+                    <span>+971 54 783 9880</span>
                   </a>
                 </li>
                 <li>
@@ -190,14 +190,14 @@ export default function Footer() {
                   </a>
                 </li>
                 <li>
-                  <a href="mailto:info@jahedcurtains.ae" className="flex items-center space-x-3 hover:text-[#9c1b63] transition-colors">
+                  <a href="mailto:zaheedfeni47@gmail.com" className="flex items-center space-x-3 hover:text-[#9c1b63] transition-colors">
                     <FiMail className="text-[#9c1b63] text-lg flex-shrink-0" />
-                    <span>info@jahedcurtains.ae</span>
+                    <span>zaheedfeni47@gmail.com</span>
                   </a>
                 </li>
                 <li className="flex items-start space-x-3">
                   <FiMapPin className="text-[#9c1b63] text-lg flex-shrink-0 mt-0.5" />
-                  <span>Serving Dubai, Sharjah &amp; Abu Dhabi</span>
+                  <span>Mohammed Bin Zayed City, Mohammed Bin Zayed East, &amp; Al Majmoua Al Muttahida Al Qabidha Building, Abu Dhabi, UAE</span>
                 </li>
               </ul>
             </div>

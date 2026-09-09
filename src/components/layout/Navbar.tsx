@@ -134,7 +134,7 @@ export default function Navbar() {
           <div className="hidden lg:flex items-center space-x-4 xl:space-x-5 flex-shrink-0">
             <a href="tel:+971551693931" className="flex items-center space-x-1.5 text-gray-800 font-semibold hover:text-[#8b1e56] transition text-[13px] xl:text-[15px] whitespace-nowrap">
               <HiPhone className="text-[#8b1e56] text-lg xl:text-xl flex-shrink-0" />
-              <span>+971 55 169 3931</span>
+              <span>+971 54 783 9880</span>
             </a>
             <Link
               href="/contact"
@@ -218,9 +218,9 @@ export default function Navbar() {
           </div>
 
           <div className="pt-4 border-t border-gray-100 space-y-3">
-            <a href="tel:+971551693931" className="flex items-center justify-center space-x-2 text-gray-800 font-semibold py-2">
+            <a href="tel:+971547839880" className="flex items-center justify-center space-x-2 text-gray-800 font-semibold py-2">
               <HiPhone className="text-[#8b1e56] text-xl" />
-              <span>+971 55 169 3931</span>
+              <span>+971 54 783 9880</span>
             </a>
             <Link
               href="/contact"
