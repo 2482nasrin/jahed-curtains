@@ -1,10 +1,15 @@
 "use client";
 
-import { Suspense, useState } from "react";
+import { Suspense, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { FaArrowRight } from "react-icons/fa";
+import {
+  FaArrowRight,
+  FaChevronDown,
+  FaChevronLeft,
+  FaChevronRight,
+} from "react-icons/fa";
 import { HiPlay } from "react-icons/hi";
 import {
   products,
@@ -12,6 +17,20 @@ import {
   productSubcategories,
   ProductCategory,
 } from "@/data/products";
+
+const PRODUCTS_PER_PAGE = 18;
+
+function getPageNumbers(current: number, total: number): (number | "...")[] {
+  if (total <= 7) return Array.from({ length: total }, (_, i) => i + 1);
+  const pages: (number | "...")[] = [1];
+  const start = Math.max(2, current - 1);
+  const end = Math.min(total - 1, current + 1);
+  if (start > 2) pages.push("...");
+  for (let i = start; i <= end; i++) pages.push(i);
+  if (end < total - 1) pages.push("...");
+  pages.push(total);
+  return pages;
+}
 
 function isProductCategory(value: string | null): value is ProductCategory {
   return productCategories.some((category) => category.key === value);
@@ -25,6 +44,8 @@ function ProductsPageContent() {
   );
 
   const [activeSubcategory, setActiveSubcategory] = useState<string | "all">("all");
+  const [currentPage, setCurrentPage] = useState(1);
+  const gridTopRef = useRef<HTMLDivElement>(null);
 
   const subcategories =
     activeCategory === "all" ? [] : productSubcategories[activeCategory];
@@ -39,9 +60,35 @@ function ProductsPageContent() {
     return true;
   });
 
+  const [expandedCategory, setExpandedCategory] = useState<ProductCategory | null>(
+    isProductCategory(categoryParam) ? categoryParam : null
+  );
+
+  const totalPages = Math.max(1, Math.ceil(filteredProducts.length / PRODUCTS_PER_PAGE));
+  const safePage = Math.min(currentPage, totalPages);
+  const pageStart = (safePage - 1) * PRODUCTS_PER_PAGE;
+  const pageProducts = filteredProducts.slice(pageStart, pageStart + PRODUCTS_PER_PAGE);
+
+  const goToPage = (page: number) => {
+    const next = Math.min(Math.max(1, page), totalPages);
+    setCurrentPage(next);
+    gridTopRef.current?.scrollIntoView({ block: "start" });
+  };
+
+  const selectSubcategory = (sub: string | "all") => {
+    setActiveSubcategory(sub);
+    setCurrentPage(1);
+  };
+
   const selectCategory = (category: ProductCategory | "all") => {
     setActiveCategory(category);
     setActiveSubcategory("all");
+    setCurrentPage(1);
+  };
+
+  const toggleMobileCategory = (category: ProductCategory) => {
+    selectCategory(category);
+    setExpandedCategory((current) => (current === category ? null : category));
   };
 
   return (
@@ -66,9 +113,82 @@ function ProductsPageContent() {
 
       {/* Products Grid */}
       <section className="py-14 sm:py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Category Tabs */}
-          <div className="flex flex-wrap gap-1 w-fit max-w-full bg-[#EFECE6] py-[10px] px-[15px] rounded-full shadow-inner mb-12">
+        <div ref={gridTopRef} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-24">
+          {/* Mobile: accordion list */}
+          <div className="sm:hidden flex flex-col gap-3 mb-10">
+            <button
+              type="button"
+              onClick={() => {
+                selectCategory("all");
+                setExpandedCategory(null);
+              }}
+              className={`w-full flex items-center justify-between px-5 py-4 rounded-2xl text-sm font-bold text-left shadow-sm border transition-colors ${
+                activeCategory === "all"
+                  ? "bg-[#9c1b63] border-[#9c1b63] text-white"
+                  : "bg-white border-gray-100 text-gray-900"
+              }`}
+            >
+              All Products
+            </button>
+            {productCategories
+              .filter((category) => category.key !== "all")
+              .map((category) => {
+                const key = category.key as ProductCategory;
+                const isActive = activeCategory === key;
+                const isOpen = expandedCategory === key;
+                const subs = productSubcategories[key];
+                return (
+                  <div
+                    key={key}
+                    className={`rounded-2xl bg-white shadow-sm border overflow-hidden transition-colors ${
+                      isActive ? "border-[#9c1b63]" : "border-gray-100"
+                    }`}
+                  >
+                    <button
+                      type="button"
+                      onClick={() => toggleMobileCategory(key)}
+                      className={`w-full flex items-center justify-between px-5 py-4 text-sm font-bold text-left ${
+                        isActive ? "text-[#9c1b63]" : "text-gray-900"
+                      }`}
+                    >
+                      <span>{category.label}</span>
+                      <FaChevronDown
+                        className={`text-xs text-gray-500 transition-transform duration-300 ${
+                          isOpen ? "rotate-180" : ""
+                        }`}
+                      />
+                    </button>
+                    {isOpen && (
+                      <div className="border-t border-gray-100 px-3 py-3 flex flex-col gap-1">
+                        {[{ key: "all", label: "All " + category.label }, ...subs].map((sub) => {
+                          const subActive = isActive && activeSubcategory === sub.key;
+                          return (
+                            <button
+                              key={sub.key}
+                              type="button"
+                              onClick={() => {
+                                selectCategory(key);
+                                selectSubcategory(sub.key);
+                              }}
+                              className={`w-full text-left px-4 py-2.5 rounded-xl text-sm font-medium transition-colors ${
+                                subActive
+                                  ? "bg-[#9c1b63] text-white"
+                                  : "text-gray-700 hover:bg-[#FAF9F6] hover:text-[#9c1b63]"
+                              }`}
+                            >
+                              {sub.label}
+                            </button>
+                          );
+                        })}
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+          </div>
+
+          {/* Desktop: category tabs */}
+          <div className="hidden sm:flex flex-wrap gap-1 w-fit max-w-full bg-[#EFECE6] py-[10px] px-[15px] rounded-full shadow-inner mb-12">
             {productCategories.map((category) => {
               const isActive = activeCategory === category.key;
               return (
@@ -88,16 +208,16 @@ function ProductsPageContent() {
             })}
           </div>
 
-          {/* Subcategory Pills */}
+          {/* Desktop: subcategory pills */}
           {subcategories.length > 0 && (
-            <div className="flex flex-wrap justify-center gap-3 -mt-4 mb-12">
+            <div className="hidden sm:flex flex-wrap justify-center gap-3 -mt-4 mb-12">
               {[{ key: "all", label: "All" }, ...subcategories].map((sub) => {
                 const isActive = activeSubcategory === sub.key;
                 return (
                   <button
                     key={sub.key}
                     type="button"
-                    onClick={() => setActiveSubcategory(sub.key)}
+                    onClick={() => selectSubcategory(sub.key)}
                     className={`px-5 py-2 rounded-full text-sm font-semibold whitespace-nowrap border transition-all duration-300 ${
                       isActive
                         ? "bg-[#9c1b63] border-[#9c1b63] text-white shadow-md"
@@ -124,7 +244,7 @@ function ProductsPageContent() {
             </div>
           )}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredProducts.map((product) => (
+            {pageProducts.map((product) => (
               <Link
                 key={product.slug}
                 href={`/products/${product.slug}`}
@@ -165,6 +285,64 @@ function ProductsPageContent() {
               </Link>
             ))}
           </div>
+
+          {/* Pagination */}
+          {totalPages > 1 && (
+            <nav
+              aria-label="Product pages"
+              className="mt-12 flex flex-col items-center gap-4"
+            >
+              <div className="flex flex-wrap items-center justify-center gap-2">
+                <button
+                  type="button"
+                  onClick={() => goToPage(safePage - 1)}
+                  disabled={safePage === 1}
+                  aria-label="Previous page"
+                  className="w-10 h-10 rounded-full border border-gray-200 bg-white flex items-center justify-center text-gray-700 hover:bg-[#9c1b63] hover:border-[#9c1b63] hover:text-white transition-colors disabled:opacity-40 disabled:hover:bg-white disabled:hover:text-gray-700 disabled:hover:border-gray-200"
+                >
+                  <FaChevronLeft className="text-xs" />
+                </button>
+                {getPageNumbers(safePage, totalPages).map((page, index) =>
+                  page === "..." ? (
+                    <span
+                      key={`ellipsis-${index}`}
+                      className="w-10 h-10 flex items-center justify-center text-gray-400 text-sm"
+                    >
+                      &hellip;
+                    </span>
+                  ) : (
+                    <button
+                      key={page}
+                      type="button"
+                      onClick={() => goToPage(page)}
+                      aria-current={page === safePage ? "page" : undefined}
+                      className={`w-10 h-10 rounded-full text-sm font-bold border transition-colors ${
+                        page === safePage
+                          ? "bg-[#9c1b63] border-[#9c1b63] text-white shadow-md"
+                          : "bg-white border-gray-200 text-gray-700 hover:bg-[#9c1b63] hover:border-[#9c1b63] hover:text-white"
+                      }`}
+                    >
+                      {page}
+                    </button>
+                  )
+                )}
+                <button
+                  type="button"
+                  onClick={() => goToPage(safePage + 1)}
+                  disabled={safePage === totalPages}
+                  aria-label="Next page"
+                  className="w-10 h-10 rounded-full border border-gray-200 bg-white flex items-center justify-center text-gray-700 hover:bg-[#9c1b63] hover:border-[#9c1b63] hover:text-white transition-colors disabled:opacity-40 disabled:hover:bg-white disabled:hover:text-gray-700 disabled:hover:border-gray-200"
+                >
+                  <FaChevronRight className="text-xs" />
+                </button>
+              </div>
+              <p className="text-xs text-gray-500">
+                Showing {pageStart + 1}&ndash;
+                {Math.min(pageStart + PRODUCTS_PER_PAGE, filteredProducts.length)} of{" "}
+                {filteredProducts.length} products
+              </p>
+            </nav>
+          )}
         </div>
       </section>
     </main>
