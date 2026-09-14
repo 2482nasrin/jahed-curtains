@@ -19,14 +19,14 @@ export default function RecentWorkSection() {
     { id: 8, category: "Curtains", image: "curtains/t3.png" },
 
     // Sofa (8 items)
-    { id: 9, category: "Sofa", image:  "sofa/sofa-1.png" },
-    { id: 10, category: "Sofa", image: "sofa/sofa-2.png" },
-    { id: 11, category: "Sofa", image: "sofa/sofa-3.png" },
-    { id: 12, category: "Sofa", image: "sofa/sofa-4.png" },
-    { id: 13, category: "Sofa", image: "sofa/sofa-5.png" },
-    { id: 14, category: "Sofa", image: "sofa/sofa-6.png" },
-    { id: 15, category: "Sofa", image: "sofa/sofa-7.png" },
-    { id: 16, category: "Sofa", image: "sofa/sofa-8.png" },
+    { id: 9, category: "Sofa", image:  "sofa/sofa-1.jpeg" },
+    { id: 10, category: "Sofa", image: "sofa/sofa-2.jpeg" },
+    { id: 11, category: "Sofa", image: "sofa/sofa-3.jpeg" },
+    { id: 12, category: "Sofa", image: "sofa/sofa-4.jpeg" },
+    { id: 13, category: "Sofa", image: "sofa/sofa-5.jpeg" },
+    { id: 14, category: "Sofa", image: "sofa/sofa-6.jpeg" },
+    { id: 15, category: "Sofa", image: "sofa/sofa-7.jpeg" },
+    { id: 16, category: "Sofa", image: "sofa/sofa-8.jpeg" },
 
     // Carpet (8 items)
     { id: 17, category: "Carpet", image: "carpet/carpet-1.png" },
@@ -39,14 +39,14 @@ export default function RecentWorkSection() {
     { id: 24, category: "Carpet", image: "carpet/carpet-8.png" },
 
     // Furniture (8 items)
-    { id: 25, category: "Furniture", image: "furniture/furniture-5.jpeg" },
-    { id: 26, category: "Furniture", image: "furniture/furniture-2.jpeg" },
-    { id: 27, category: "Furniture", image: "furniture/furniture-3.jpeg" },
-    { id: 28, category: "Furniture", image: "furniture/furniture-7.jpeg" },
-    { id: 29, category: "Furniture", image: "furniture/furniture-1.jpeg" },
-    { id: 30, category: "Furniture", image: "furniture/furniture-8.jpeg" },
-    { id: 31, category: "Furniture", image: "furniture/furniture-6.png"  },
-    { id: 32, category: "Furniture", image: "furniture/furniture-4.jpeg" },
+    { id: 25, category: "Furniture", image: "furniture/furniture-9.png" },
+    { id: 26, category: "Furniture", image: "furniture/furniture-2.png" },
+    { id: 27, category: "Furniture", image: "furniture/furniture-3.png" },
+    { id: 28, category: "Furniture", image: "furniture/furniture-7.png" },
+    { id: 29, category: "Furniture", image: "furniture/furniture-1.png" },
+    { id: 30, category: "Furniture", image: "furniture/furniture-8.png" },
+    { id: 31, category: "Furniture", image: "furniture/furniture-10.png"  },
+    { id: 32, category: "Furniture", image: "furniture/furniture-11.png" },
   ];
 
   const filteredItems = workItems.filter((item) => item.category === activeTab);
