@@ -3,6 +3,16 @@ import Link from "next/link";
 import { FiCreditCard } from "react-icons/fi";
 import { FaWhatsapp } from "react-icons/fa";
 
+import type { Metadata } from "next";
+import { buildMetadata } from "@/lib/seo";
+
+export const metadata: Metadata = buildMetadata({
+  title: "Payment Terms",
+  description:
+    "Read the payment terms for Jahed Curtains orders, including when payment is due, accepted methods and how quotes work for made-to-measure curtains and blinds.",
+  path: "/info/payment-terms",
+});
+
 const PAGE_WHATSAPP_TEXT = encodeURIComponent(
   "Hello Jahed Curtains! I have a query regarding your Payment Terms."
 );

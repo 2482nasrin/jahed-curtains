@@ -3,6 +3,16 @@ import Link from "next/link";
 import { FiPhoneCall, FiMail, FiMapPin, FiShield, FiFileText } from "react-icons/fi";
 import { FaWhatsapp } from "react-icons/fa";
 
+import type { Metadata } from "next";
+import { buildMetadata } from "@/lib/seo";
+
+export const metadata: Metadata = buildMetadata({
+  title: "Official Trade License Info",
+  description:
+    "View Jahed Curtains' official trade license and registered company details in the UAE. We are a licensed curtain and blind supplier and installer in Abu Dhabi.",
+  path: "/trade-license",
+});
+
 const PAGE_WHATSAPP_TEXT = encodeURIComponent(
   "Hello Jahed Curtains! I have a query regarding your Trade License and company details."
 );

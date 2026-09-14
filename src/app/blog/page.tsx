@@ -2,6 +2,16 @@ import Link from "next/link";
 import Image from "next/image";
 import { blogPosts } from "@/data/blogPosts";
 
+import type { Metadata } from "next";
+import { buildMetadata } from "@/lib/seo";
+
+export const metadata: Metadata = buildMetadata({
+  title: "Blog | Curtain & Blind Guides for UAE",
+  description:
+    "Practical guides on blackout curtains, sheer curtains, blinds and motorized curtains for UAE homes. Tips on fabrics, sizing, styles and prices from Jahed Curtains.",
+  path: "/blog",
+});
+
 export default function BlogPage() {
   return (
     <main className="min-h-screen bg-white">

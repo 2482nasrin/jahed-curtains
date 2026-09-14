@@ -3,6 +3,16 @@ import Link from "next/link";
 import { FiShield } from "react-icons/fi";
 import { FaWhatsapp } from "react-icons/fa";
 
+import type { Metadata } from "next";
+import { buildMetadata } from "@/lib/seo";
+
+export const metadata: Metadata = buildMetadata({
+  title: "Privacy Policy",
+  description:
+    "Learn how Jahed Curtains collects, uses and protects your personal information when you request a quote, book a home visit or contact us through our website.",
+  path: "/info/privacy-policy",
+});
+
 const PAGE_WHATSAPP_TEXT = encodeURIComponent(
   "Hello Jahed Curtains! I have a query regarding your Privacy Policy."
 );

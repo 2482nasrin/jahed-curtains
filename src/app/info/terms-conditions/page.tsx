@@ -3,6 +3,16 @@ import Link from "next/link";
 import { FiFileText } from "react-icons/fi";
 import { FaWhatsapp } from "react-icons/fa";
 
+import type { Metadata } from "next";
+import { buildMetadata } from "@/lib/seo";
+
+export const metadata: Metadata = buildMetadata({
+  title: "Terms & Conditions",
+  description:
+    "Terms and conditions for using the Jahed Curtains website and ordering made-to-measure curtains, blinds and motorized curtain systems across the UAE.",
+  path: "/info/terms-conditions",
+});
+
 const PAGE_WHATSAPP_TEXT = encodeURIComponent(
   "Hello Jahed Curtains! I have a query regarding your Terms & Conditions."
 );

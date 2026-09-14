@@ -3,6 +3,16 @@ import Link from "next/link";
 import { FiMapPin, FiPhone, FiMail, FiInstagram } from "react-icons/fi";
 import { HiCheckCircle } from "react-icons/hi";
 
+import type { Metadata } from "next";
+import { buildMetadata } from "@/lib/seo";
+
+export const metadata: Metadata = buildMetadata({
+  title: "About Us | Curtains Made Simple",
+  description:
+    "Jahed Curtains fits made-to-measure curtains and blinds for homes and offices across Dubai, Sharjah and Abu Dhabi with free home visits and our own installation team.",
+  path: "/about",
+});
+
 const AREA_WHATSAPP_TEXT = encodeURIComponent("Hello Jahed Curtains! Do you cover my area?");
 
 const complimentaryServices = [

@@ -3,6 +3,16 @@ import Link from "next/link";
 import { FiDollarSign } from "react-icons/fi";
 import { FaWhatsapp } from "react-icons/fa";
 
+import type { Metadata } from "next";
+import { buildMetadata } from "@/lib/seo";
+
+export const metadata: Metadata = buildMetadata({
+  title: "Payment Details",
+  description:
+    "Accepted payment methods at Jahed Curtains: cash, bank transfer and card. No advance payment is required; you pay after your curtains or blinds are installed.",
+  path: "/info/payment-details",
+});
+
 const PAGE_WHATSAPP_TEXT = encodeURIComponent(
   "Hello Jahed Curtains! I have a query regarding your Payment Details."
 );

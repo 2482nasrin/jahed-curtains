@@ -6,6 +6,26 @@ import { FaWhatsapp } from "react-icons/fa";
 import { getProductBySlug, getRelatedProducts, products } from "@/data/products";
 import ProductFaqAccordion from "@/components/products/ProductFaqAccordion";
 import ProductGallery from "@/components/products/ProductGallery";
+import type { Metadata } from "next";
+import { buildMetadata, withSeoSuffix } from "@/lib/seo";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const product = getProductBySlug(slug);
+  if (!product) {
+    return { title: "Product Not Found", robots: { index: false, follow: false } };
+  }
+  return buildMetadata({
+    title: `${product.title} in UAE`,
+    description: withSeoSuffix(product.description),
+    path: `/products/${product.slug}`,
+    image: product.image,
+  });
+}
 import ProductDetailsSection from "@/components/products/ProductDetailsSection";
 import ProductReviews from "@/components/products/ProductReviews";
 

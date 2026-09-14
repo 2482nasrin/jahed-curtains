@@ -3,6 +3,16 @@ import Link from "next/link";
 import { FiTruck } from "react-icons/fi";
 import { FaWhatsapp } from "react-icons/fa";
 
+import type { Metadata } from "next";
+import { buildMetadata } from "@/lib/seo";
+
+export const metadata: Metadata = buildMetadata({
+  title: "Delivery Information",
+  description:
+    "How Jahed Curtains delivers and installs your curtains and blinds across Dubai, Sharjah and Abu Dhabi, including lead times, scheduling and installation details.",
+  path: "/info/delivery-information",
+});
+
 const PAGE_WHATSAPP_TEXT = encodeURIComponent(
   "Hello Jahed Curtains! I have a query regarding your Delivery Information."
 );

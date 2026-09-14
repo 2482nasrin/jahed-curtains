@@ -3,6 +3,16 @@ import Link from "next/link";
 import { FiRotateCcw } from "react-icons/fi";
 import { FaWhatsapp } from "react-icons/fa";
 
+import type { Metadata } from "next";
+import { buildMetadata } from "@/lib/seo";
+
+export const metadata: Metadata = buildMetadata({
+  title: "Refund & Returns Policy",
+  description:
+    "Our refund and returns policy for made-to-measure curtains and blinds, covering defects, installation issues and how to raise a claim with Jahed Curtains.",
+  path: "/info/refund-and-returns-policy",
+});
+
 const PAGE_WHATSAPP_TEXT = encodeURIComponent(
   "Hello Jahed Curtains! I have a query regarding your Refund & Returns Policy."
 );

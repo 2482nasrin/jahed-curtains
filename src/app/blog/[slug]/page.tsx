@@ -2,6 +2,28 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { blogPosts, getBlogPostBySlug, getOtherBlogPosts } from "@/data/blogPosts";
+import type { Metadata } from "next";
+import { buildMetadata, withSeoSuffix } from "@/lib/seo";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const post = getBlogPostBySlug(slug);
+  if (!post) {
+    return { title: "Post Not Found", robots: { index: false, follow: false } };
+  }
+  return buildMetadata({
+    title: post.title,
+    description: withSeoSuffix(post.description),
+    path: `/blog/${post.slug}`,
+    image: post.image,
+    type: "article",
+    absoluteTitle: true,
+  });
+}
 
 export function generateStaticParams() {
   return blogPosts.map((post) => ({ slug: post.slug }));
