@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import FloatingWhatsApp from "@/components/FloatingWhatsApp"; // ১. ফ্লোটিং হোয়াটসঅ্যাপ ইমপোর্ট করা হলো
 
 export const metadata: Metadata = {
   title: "Jahed Curtains",
@@ -19,6 +20,9 @@ export default function RootLayout({
         <Navbar />
         <main className="flex-grow">{children}</main>
         <Footer />
+        
+        {/* ২. এখানে বসানোর ফলে এখন এটি সব পেজে অটোমেটিক দেখাবে */}
+        <FloatingWhatsApp />
       </body>
     </html>
   );

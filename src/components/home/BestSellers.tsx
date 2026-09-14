@@ -5,11 +5,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { FaArrowRight } from "react-icons/fa";
-import { products, ProductCategory } from "@/data/products";
+import { products, ProductType } from "@/data/products";
 
-const TABS: { key: "curtains" | "blinds"; categories: ProductCategory[] }[] = [
-  { key: "curtains", categories: ["curtains-drapes", "motorized"] },
-  { key: "blinds", categories: ["blinds-shades"] },
+const TABS: { key: "curtains" | "blinds"; types: ProductType[] }[] = [
+  { key: "curtains", types: ["curtains", "motorized"] },
+  { key: "blinds", types: ["blinds"] },
 ];
 
 export default function BestSellers() {
@@ -25,9 +25,9 @@ export default function BestSellers() {
     }));
   };
 
-  const activeCategories = TABS.find((tab) => tab.key === activeTab)!.categories;
-  const currentProducts = products.filter((product) =>
-    activeCategories.includes(product.category)
+  const activeTypes = TABS.find((tab) => tab.key === activeTab)!.types;
+  const currentProducts = products.filter(
+    (product) => product.type !== undefined && activeTypes.includes(product.type)
   );
 
   return (

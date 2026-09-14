@@ -6,7 +6,12 @@ import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { FaArrowRight } from "react-icons/fa";
 import { HiPlay } from "react-icons/hi";
-import { products, productCategories, ProductCategory } from "@/data/products";
+import {
+  products,
+  productCategories,
+  productSubcategories,
+  ProductCategory,
+} from "@/data/products";
 
 function isProductCategory(value: string | null): value is ProductCategory {
   return productCategories.some((category) => category.key === value);
@@ -19,10 +24,25 @@ function ProductsPageContent() {
     isProductCategory(categoryParam) ? categoryParam : "all"
   );
 
-  const filteredProducts =
-    activeCategory === "all"
-      ? products
-      : products.filter((product) => product.category === activeCategory);
+  const [activeSubcategory, setActiveSubcategory] = useState<string | "all">("all");
+
+  const subcategories =
+    activeCategory === "all" ? [] : productSubcategories[activeCategory];
+
+  const filteredProducts = products.filter((product) => {
+    if (activeCategory !== "all" && product.category !== activeCategory) {
+      return false;
+    }
+    if (activeSubcategory !== "all" && product.subcategory !== activeSubcategory) {
+      return false;
+    }
+    return true;
+  });
+
+  const selectCategory = (category: ProductCategory | "all") => {
+    setActiveCategory(category);
+    setActiveSubcategory("all");
+  };
 
   return (
     <main className="min-h-screen bg-white">
@@ -48,14 +68,14 @@ function ProductsPageContent() {
       <section className="py-14 sm:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Category Tabs */}
-          <div className="inline-flex flex-wrap bg-[#EFECE6] p-1.5 rounded-full shadow-inner mb-12">
+          <div className="flex flex-wrap gap-1 w-fit max-w-full bg-[#EFECE6] py-[10px] px-[15px] rounded-full shadow-inner mb-12">
             {productCategories.map((category) => {
               const isActive = activeCategory === category.key;
               return (
                 <button
                   key={category.key}
                   type="button"
-                  onClick={() => setActiveCategory(category.key)}
+                  onClick={() => selectCategory(category.key)}
                   className={`px-6 py-2.5 rounded-full text-sm font-bold whitespace-nowrap transition-all duration-300 ${
                     isActive
                       ? "bg-white text-[#9c1b63] shadow-md"
@@ -68,7 +88,41 @@ function ProductsPageContent() {
             })}
           </div>
 
+          {/* Subcategory Pills */}
+          {subcategories.length > 0 && (
+            <div className="flex flex-wrap justify-center gap-3 -mt-4 mb-12">
+              {[{ key: "all", label: "All" }, ...subcategories].map((sub) => {
+                const isActive = activeSubcategory === sub.key;
+                return (
+                  <button
+                    key={sub.key}
+                    type="button"
+                    onClick={() => setActiveSubcategory(sub.key)}
+                    className={`px-5 py-2 rounded-full text-sm font-semibold whitespace-nowrap border transition-all duration-300 ${
+                      isActive
+                        ? "bg-[#9c1b63] border-[#9c1b63] text-white shadow-md"
+                        : "bg-white border-gray-200 text-gray-700 hover:bg-[#9c1b63] hover:border-[#9c1b63] hover:text-white hover:shadow-md"
+                    }`}
+                  >
+                    {sub.label}
+                  </button>
+                );
+              })}
+            </div>
+          )}
+
           {/* Grid */}
+          {filteredProducts.length === 0 && (
+            <div className="rounded-3xl border border-dashed border-gray-200 bg-[#FAF9F6] px-6 py-16 text-center">
+              <p className="text-lg font-bold text-gray-900 mb-2">
+                Products coming soon
+              </p>
+              <p className="text-sm text-gray-600 max-w-md mx-auto">
+                We&apos;re adding items to this category. Contact us and
+                we&apos;ll help you with a custom solution in the meantime.
+              </p>
+            </div>
+          )}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredProducts.map((product) => (
               <Link
@@ -87,7 +141,7 @@ function ProductsPageContent() {
                   <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-md px-3 py-1 rounded-full text-[10px] sm:text-xs font-bold tracking-wider text-gray-800 shadow-sm">
                     {product.badge}
                   </div>
-                  {product.category === "motorized" && (
+                  {product.type === "motorized" && (
                     <div className="absolute inset-0 flex items-center justify-center">
                       <div className="w-12 h-12 rounded-full bg-white/90 flex items-center justify-center shadow-md group-hover:scale-110 transition-transform">
                         <HiPlay className="text-[#9c1b63] text-2xl translate-x-0.5" />

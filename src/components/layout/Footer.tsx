@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { FiPhoneCall, FiMail, FiMapPin } from "react-icons/fi";
-import { FaInstagram, FaWhatsapp } from "react-icons/fa";
+import { FaFacebookF, FaWhatsapp, FaInstagram } from "react-icons/fa";
 
 const BOOKING_WHATSAPP_TEXT = encodeURIComponent(
   "Hello Jahed Curtains! I'd like to book a free home visit for curtains or blinds."
@@ -79,16 +79,54 @@ export default function Footer() {
               
               <p className="text-sm text-gray-400 leading-relaxed">
                 Made-to-measure curtains and blinds for homes and offices across the UAE. Free home visit, free measurement, and installation by our own team - with no advance payment.
-                </p>
+              </p>
               
-              <div className="pt-2">
+              <div className="pt-2 flex flex-col space-y-3">
+                {/* Social Icons Row */}
+                <div className="flex items-center space-x-3">
+                  {/* Facebook Icon */}
+                  <a
+                    href="https://www.facebook.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-10 h-10 bg-[#1877F2] hover:opacity-90 text-white rounded-full flex items-center justify-center transition-opacity"
+                    aria-label="Facebook"
+                  >
+                    <FaFacebookF className="text-base" />
+                  </a>
+
+                  {/* WhatsApp Icon */}
+                  <a
+                    href={`https://wa.me/971547839880?text=${BOOKING_WHATSAPP_TEXT}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-10 h-10 bg-[#25D366] hover:opacity-90 text-white rounded-full flex items-center justify-center transition-opacity"
+                    aria-label="WhatsApp"
+                  >
+                    <FaWhatsapp className="text-lg" />
+                  </a>
+
+                  {/* Instagram Icon */}
+                  <a
+                    href="https://www.instagram.com/jahid_curtains/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-10 h-10 bg-[#9c1b63] hover:opacity-90  text-white rounded-full flex items-center justify-center transition-colors"
+                    aria-label="Instagram"
+                  >
+                    <FaInstagram className="text-lg" />
+                  </a>
+                </div>
+
+                {/* Our Location Button */}
                 <a
-                  href="https://www.instagram.com/jahid_curtains/"
+                  href="http://google.com/maps/place/24%C2%B022'32.0%22N+54%C2%B031'47.8%22E/@24.3755417,54.5273705,17z/data=!3m1!4b1!4m4!3m3!8m2!3d24.3755417!4d54.5299454?hl=en&entry=ttu&g_ep=EgoyMDI2MDkwOS4wIKXMDSoASAFQAw%3D%3D" 
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 bg-white  bg-gray-800 hover:bg-[#9c1b63] text-white rounded-full flex items-center justify-center transition-colors duration-300"
+                  className="inline-flex items-center space-x-2 px-4 py-2 mt-[10px] rounded-md border border-white/30 hover:border-white text-white w-fit transition-all duration-300 group"
                 >
-                  <FaInstagram className="text-lg text-[#9c1b63] hover:text-white" />
+                  <FiMapPin className="text-white text-base" />
+                  <span className="text-sm font-medium tracking-wide">our location</span>
                 </a>
               </div>
             </div>
@@ -120,6 +158,11 @@ export default function Footer() {
                   </Link>
                 </li>
                 <li>
+                  <Link href="/trade-license" className="hover:text-[#9c1b63] transition-colors">
+                    Trade License Info
+                  </Link>
+                </li>
+                <li>
                   <Link href="/contact" className="hover:text-[#9c1b63] transition-colors">
                     Book a Free Visit
                   </Link>
@@ -127,50 +170,40 @@ export default function Footer() {
               </ul>
             </div>
 
-            {/* Column 3: Popular Products */}
+            {/* Column 3: Policies */}
             <div>
               <h3 className="text-white text-xs sm:text-sm font-bold tracking-widest uppercase mb-5">
-                Popular Products
+                Policies
               </h3>
               <ul className="space-y-3 text-sm">
                 <li>
-                  <Link href="/products/sheer-curtains" className="hover:text-[#9c1b63] transition-colors">
-                    Sheer Curtains
+                  <Link href="/info/privacy-policy" className="hover:text-[#9c1b63] transition-colors">
+                    Privacy Policy
                   </Link>
                 </li>
                 <li>
-                  <Link href="/products/sheer-blackout" className="hover:text-[#9c1b63] transition-colors">
-                    Sheer &amp; Blackout Curtains
+                  <Link href="/info/terms-conditions" className="hover:text-[#9c1b63] transition-colors">
+                    Terms & Conditions
                   </Link>
                 </li>
                 <li>
-                  <Link href="/products/wave-curtains" className="hover:text-[#9c1b63] transition-colors">
-                    Wave Curtains
+                  <Link href="/info/payment-terms" className="hover:text-[#9c1b63] transition-colors">
+                    Payment Terms
                   </Link>
                 </li>
                 <li>
-                  <Link href="/products/roller-blinds" className="hover:text-[#9c1b63] transition-colors">
-                    Premium Roller Blinds
+                  <Link href="/info/payment-details" className="hover:text-[#9c1b63] transition-colors">
+                    Payment Details
                   </Link>
                 </li>
                 <li>
-                  <Link href="/products/roman-blinds" className="hover:text-[#9c1b63] transition-colors">
-                    Roman Blinds
+                  <Link href="/info/delivery-information" className="hover:text-[#9c1b63] transition-colors">
+                    Delivery Information
                   </Link>
                 </li>
                 <li>
-                  <Link href="/products/zebra-blinds" className="hover:text-[#9c1b63] transition-colors">
-                    Zebra Blinds
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/products/wooden-blinds" className="hover:text-[#9c1b63] transition-colors">
-                    Wooden Blinds
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/products/motorized-curtains" className="hover:text-[#9c1b63] transition-colors">
-                    Motorized Curtains
+                  <Link href="/info/refund-and-returns-policy" className="hover:text-[#9c1b63] transition-colors">
+                    Refund & Returns Policy
                   </Link>
                 </li>
               </ul>

@@ -121,15 +121,7 @@ export default function HeroSection() {
       </div>
 
       {/* Floating WhatsApp Button on Bottom Right */}
-      <a
-        href={`https://wa.me/971547839880?text=${GENERAL_WHATSAPP_TEXT}`}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="fixed bottom-6 right-6 z-50 bg-[#22c55e] hover:bg-[#1ea34d] text-white p-4 rounded-full shadow-2xl transition transform hover:scale-110 flex items-center justify-center"
-        aria-label="WhatsApp Chat"
-      >
-        <FaWhatsapp className="text-3xl" />
-      </a>
+      
     </section>
   );
 }

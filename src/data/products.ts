@@ -1,4 +1,15 @@
-export type ProductCategory = "curtains-drapes" | "blinds-shades" | "motorized";
+import { generatedProducts } from "./generatedProducts";
+
+export type ProductCategory =
+  | "curtains-window-solutions"
+  | "furniture"
+  | "carpets-flooring-decor"
+  | "indoor-decor"
+  | "lighting"
+  | "interior-soft-furnishing"
+  | "custom-interior-solutions";
+
+export type ProductType = "curtains" | "blinds" | "motorized";
 
 export interface ProductSpec {
   label: string;
@@ -13,6 +24,8 @@ export interface ProductFaq {
 export interface Product {
   slug: string;
   category: ProductCategory;
+  type?: ProductType;
+  subcategory?: string;
   badge: string;
   title: string;
   tagline: string;
@@ -30,15 +43,100 @@ export interface Product {
 
 export const productCategories: { key: ProductCategory | "all"; label: string }[] = [
   { key: "all", label: "All" },
-  { key: "curtains-drapes", label: "Curtains & Drapes" },
-  { key: "blinds-shades", label: "Blinds & Shades" },
-  { key: "motorized", label: "Motorized" },
+  { key: "curtains-window-solutions", label: "Curtains & Window Solutions" },
+  { key: "furniture", label: "Furniture" },
+  { key: "carpets-flooring-decor", label: "Carpets & Flooring Décor" },
+  { key: "indoor-decor", label: "Indoor Décor" },
+  { key: "lighting", label: "Lighting" },
+  { key: "interior-soft-furnishing", label: "Interior Soft Furnishing" },
+  { key: "custom-interior-solutions", label: "Custom Interior Solutions" },
 ];
 
-export const products: Product[] = [
+export const productSubcategories: Record<
+  ProductCategory,
+  { key: string; label: string }[]
+> = {
+  "curtains-window-solutions": [
+    { key: "curtains-and-drapes", label: "Curtains & Drapes" },
+    { key: "sheer-curtains", label: "Sheer Curtains" },
+    { key: "blackout-curtains", label: "Blackout Curtains" },
+    { key: "motorized-curtains", label: "Motorized Curtains" },
+    { key: "roller-blinds", label: "Roller Blinds" },
+    { key: "roman-blinds", label: "Roman Blinds" },
+    { key: "venetian-blinds", label: "Venetian Blinds" },
+    { key: "zebra-blinds", label: "Zebra Blinds" },
+    { key: "wooden-blinds", label: "Wooden Blinds" },
+    { key: "outdoor-blinds", label: "Outdoor Blinds" },
+    { key: "curtain-tracks-and-accessories", label: "Curtain Tracks & Accessories" },
+  ],
+  "furniture": [
+    { key: "sofa-and-sofa-sets", label: "Sofa & Sofa Sets" },
+    { key: "armchairs-and-lounge-chairs", label: "Armchairs & Lounge Chairs" },
+    { key: "recliners", label: "Recliners" },
+    { key: "dining-tables-and-chairs", label: "Dining Tables & Chairs" },
+    { key: "coffee-and-side-tables", label: "Coffee & Side Tables" },
+    { key: "console-tables", label: "Console Tables" },
+    { key: "tv-units", label: "TV Units" },
+    { key: "beds-and-bed-frames", label: "Beds & Bed Frames" },
+    { key: "bedside-tables", label: "Bedside Tables" },
+    { key: "wardrobes", label: "Wardrobes" },
+    { key: "cabinets-and-storage-units", label: "Cabinets & Storage Units" },
+    { key: "office-furniture", label: "Office Furniture" },
+  ],
+  "carpets-flooring-decor": [
+    { key: "carpets", label: "Carpets" },
+    { key: "area-rugs", label: "Area Rugs" },
+    { key: "custom-carpets", label: "Custom Carpets" },
+    { key: "carpet-tiles", label: "Carpet Tiles" },
+    { key: "runners", label: "Runners" },
+    { key: "entrance-mats", label: "Entrance Mats" },
+  ],
+  "indoor-decor": [
+    { key: "wall-decor", label: "Wall Décor" },
+    { key: "mirrors", label: "Mirrors" },
+    { key: "decorative-panels", label: "Decorative Panels" },
+    { key: "wallpapers", label: "Wallpapers" },
+    { key: "art-and-paintings", label: "Art & Paintings" },
+    { key: "decorative-accessories", label: "Decorative Accessories" },
+    { key: "cushions-and-throws", label: "Cushions & Throws" },
+    { key: "vases-and-decorative-items", label: "Vases & Decorative Items" },
+    { key: "indoor-plants-and-planters", label: "Indoor Plants & Planters" },
+  ],
+  "lighting": [
+    { key: "chandeliers", label: "Chandeliers" },
+    { key: "pendant-lights", label: "Pendant Lights" },
+    { key: "ceiling-lights", label: "Ceiling Lights" },
+    { key: "wall-lights", label: "Wall Lights" },
+    { key: "floor-lamps", label: "Floor Lamps" },
+    { key: "table-lamps", label: "Table Lamps" },
+    { key: "decorative-lighting", label: "Decorative Lighting" },
+  ],
+  "interior-soft-furnishing": [
+    { key: "upholstery", label: "Upholstery" },
+    { key: "cushion-covers", label: "Cushion Covers" },
+    { key: "sofa-fabrics", label: "Sofa Fabrics" },
+    { key: "bedding-and-bed-linen", label: "Bedding & Bed Linen" },
+    { key: "throws", label: "Throws" },
+    { key: "table-linen", label: "Table Linen" },
+  ],
+  "custom-interior-solutions": [
+    { key: "custom-furniture", label: "Custom Furniture" },
+    { key: "custom-curtains-and-blinds", label: "Custom Curtains & Blinds" },
+    { key: "custom-sofa", label: "Custom Sofa" },
+    { key: "custom-carpets-and-rugs", label: "Custom Carpets & Rugs" },
+    { key: "full-indoor-interior-design", label: "Full Indoor Interior Design" },
+    { key: "residential-interior", label: "Residential Interior" },
+    { key: "hotel-and-hospitality-interior", label: "Hotel & Hospitality Interior" },
+    { key: "office-and-commercial-interior", label: "Office & Commercial Interior" },
+  ],
+};
+
+const baseProducts: Product[] = [
   {
     slug: "sheer-blackout",
-    category: "curtains-drapes",
+    category: "curtains-window-solutions",
+    type: "curtains",
+    subcategory: "blackout-curtains",
     badge: "CURTAINS & DRAPES",
     title: "Sheer & Blackout Curtains",
     tagline: "the Day & Night Set",
@@ -103,7 +201,9 @@ export const products: Product[] = [
   },
   {
     slug: "sheer-curtains",
-    category: "curtains-drapes",
+    category: "curtains-window-solutions",
+    type: "curtains",
+    subcategory: "sheer-curtains",
     badge: "CURTAINS & DRAPES",
     title: "Sheer Curtains",
     tagline: "Soft Light, Full Privacy",
@@ -162,7 +262,9 @@ export const products: Product[] = [
   },
   {
     slug: "wave-curtains",
-    category: "curtains-drapes",
+    category: "curtains-window-solutions",
+    type: "curtains",
+    subcategory: "curtains-and-drapes",
     badge: "CURTAINS & DRAPES",
     title: "Wave Curtains",
     tagline: "The Magazine Fold",
@@ -226,7 +328,9 @@ export const products: Product[] = [
   },
   {
     slug: "pinch-pleat-curtains",
-    category: "curtains-drapes",
+    category: "curtains-window-solutions",
+    type: "curtains",
+    subcategory: "curtains-and-drapes",
     badge: "CURTAINS & DRAPES",
     title: "Pinch Pleat Curtains",
     tagline: "Classic Tailored Folds",
@@ -289,7 +393,9 @@ export const products: Product[] = [
   },
   {
     slug: "eyelet-curtains",
-    category: "curtains-drapes",
+    category: "curtains-window-solutions",
+    type: "curtains",
+    subcategory: "curtains-and-drapes",
     badge: "CURTAINS & DRAPES",
     title: "Eyelet Ring Curtains",
     tagline: "Modern Metal-Ring Glide",
@@ -352,7 +458,9 @@ export const products: Product[] = [
   },
   {
     slug: "motorized-drapes",
-    category: "motorized",
+    category: "curtains-window-solutions",
+    type: "motorized",
+    subcategory: "motorized-curtains",
     badge: "MOTORIZED",
     title: "Motorized Drapes",
     tagline: "Open And Close On Command",
@@ -416,7 +524,9 @@ export const products: Product[] = [
   },
   {
     slug: "roller-blinds",
-    category: "blinds-shades",
+    category: "curtains-window-solutions",
+    type: "blinds",
+    subcategory: "roller-blinds",
     badge: "BLINDS & SHADES",
     title: "Roller Blinds",
     tagline: "Sleek, Minimal Light Control",
@@ -474,7 +584,9 @@ export const products: Product[] = [
   },
   {
     slug: "zebra-blinds",
-    category: "blinds-shades",
+    category: "curtains-window-solutions",
+    type: "blinds",
+    subcategory: "zebra-blinds",
     badge: "BLINDS & SHADES",
     title: "Zebra Blinds",
     tagline: "Adjustable Stripe, Any Light",
@@ -533,7 +645,9 @@ export const products: Product[] = [
   },
   {
     slug: "wooden-blinds",
-    category: "blinds-shades",
+    category: "curtains-window-solutions",
+    type: "blinds",
+    subcategory: "wooden-blinds",
     badge: "BLINDS & SHADES",
     title: "Wooden Blinds",
     tagline: "Natural Warmth, Real Timber",
@@ -596,7 +710,9 @@ export const products: Product[] = [
   },
   {
     slug: "roman-blinds",
-    category: "blinds-shades",
+    category: "curtains-window-solutions",
+    type: "blinds",
+    subcategory: "roman-blinds",
     badge: "BLINDS & SHADES",
     title: "Roman Blinds",
     tagline: "Fabric Folds, Tidy Stack",
@@ -655,7 +771,8 @@ export const products: Product[] = [
   },
   {
     slug: "vertical-blinds",
-    category: "blinds-shades",
+    category: "curtains-window-solutions",
+    type: "blinds",
     badge: "BLINDS & SHADES",
     title: "Vertical Blinds",
     tagline: "Wide Windows, Easy Light",
@@ -714,7 +831,9 @@ export const products: Product[] = [
   },
   {
     slug: "venetian-blinds",
-    category: "blinds-shades",
+    category: "curtains-window-solutions",
+    type: "blinds",
+    subcategory: "venetian-blinds",
     badge: "BLINDS & SHADES",
     title: "Venetian Aluminium Blinds",
     tagline: "Precise Tilt, Modern Metal",
@@ -771,16 +890,22 @@ export const products: Product[] = [
   },
 ];
 
+export const products: Product[] = [...baseProducts, ...generatedProducts];
+
 export function getProductBySlug(slug: string): Product | undefined {
   return products.find((product) => product.slug === slug);
 }
 
 export function getRelatedProducts(product: Product, count = 3): Product[] {
-  const sameCategory = products.filter(
-    (item) => item.slug !== product.slug && item.category === product.category
+  const rest = products.filter((item) => item.slug !== product.slug);
+  const sameSub = rest.filter(
+    (item) => product.subcategory && item.subcategory === product.subcategory
   );
-  const others = products.filter(
-    (item) => item.slug !== product.slug && item.category !== product.category
+  const sameCategory = rest.filter(
+    (item) => !sameSub.includes(item) && item.category === product.category
   );
-  return [...sameCategory, ...others].slice(0, count);
+  const others = rest.filter(
+    (item) => !sameSub.includes(item) && item.category !== product.category
+  );
+  return [...sameSub, ...sameCategory, ...others].slice(0, count);
 }

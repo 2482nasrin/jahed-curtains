@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { FiMapPin } from "react-icons/fi";
+import { FiMapPin, FiPhone, FiMail, FiInstagram } from "react-icons/fi";
 import { HiCheckCircle } from "react-icons/hi";
 
 const AREA_WHATSAPP_TEXT = encodeURIComponent("Hello Jahed Curtains! Do you cover my area?");
@@ -126,16 +126,10 @@ export default function AboutPage() {
                 What Our Curtain Store Offers Best
               </h2>
               <p className="text-gray-600 text-sm sm:text-base leading-relaxed mb-4">
-                Our curtain studio is a one-stop location for everything
-                custom-made. We design and tailor every order to your
-                interior style, window dimensions and the functional needs of
-                the space - with a wide range of fabrics and colours to match
-                your home.
+                We work closely with every client — from individual homeowners to hotels and businesses — to help them choose curtains, wallpaper, and decor solutions that fit their space and taste. Products can be tailored to exact measurements, fabrics, colors, and finishes.
               </p>
               <p className="text-gray-600 text-sm sm:text-base leading-relaxed mb-8">
-                To make things easier, we also offer a premium installation
-                service across the UAE. You get expert guidance, accurate
-                measurement and a neat fitting - all under one roof.
+                Our mission is simple: to make quality curtains and home décor accessible, affordable, and hassle-free for everyone across the UAE.
               </p>
               <Link
                 href="/contact"
@@ -278,6 +272,110 @@ export default function AboutPage() {
               </a>{" "}
               - if we can reach you, we will.
             </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Visit Us / Showrooms & Contact Section (New Design) */}
+      <section className="bg-[#FAF9F6] py-16 sm:py-24 border-t border-gray-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto mb-14">
+            <p className="text-[#9c1b63] font-bold tracking-widest text-xs sm:text-sm uppercase mb-3">
+              Visit Us
+            </p>
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-gray-900 tracking-tight mb-4">
+              Our Showrooms & Contact Information
+            </h2>
+            <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
+              Drop by our showrooms to explore our exclusive collection of fabrics, curtains, and blinds in person.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+            {/* Abu Dhabi Showroom Card */}
+            <div className="bg-white rounded-2xl border border-gray-200 p-6 sm:p-8 shadow-sm flex flex-col justify-between">
+              <div>
+                <div className="flex items-center gap-2 text-[#9c1b63] font-bold text-base sm:text-lg mb-3">
+                  <FiMapPin className="text-xl flex-shrink-0" />
+                  <h3>Abu Dhabi Showroom</h3>
+                </div>
+                <p className="text-gray-600 text-sm sm:text-base leading-relaxed mb-6">
+                  Mohammed Bin Zayed City, Mohammed Bin Zayed East, Al Majmoua Al Muttahida Al Qabidha Building, Abu Dhabi, UAE
+                </p>
+              </div>
+              <div className="pt-4 border-t border-gray-100">
+                <a
+                  href="https://www.google.com/maps?q=24.37554168701172,54.529945373535156&z=17&hl=en"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-sm font-bold text-[#9c1b63] hover:underline"
+                >
+                  🗺️ Get Directions (Google Maps)
+                </a>
+              </div>
+            </div>
+
+            {/* Dubai Showroom Card */}
+            <div className="bg-white rounded-2xl border border-gray-200 p-6 sm:p-8 shadow-sm flex flex-col justify-between">
+              <div>
+                <div className="flex items-center gap-2 text-[#9c1b63] font-bold text-base sm:text-lg mb-3">
+                  <FiMapPin className="text-xl flex-shrink-0" />
+                  <h3>Dubai Showroom</h3>
+                </div>
+                <p className="text-gray-600 text-sm sm:text-base leading-relaxed mb-6">
+                  Dubai Showroom Address (Visit our store or book an appointment via WhatsApp for consultation).
+                </p>
+              </div>
+              <div className="pt-4 border-t border-gray-100">
+                <span className="text-sm font-semibold text-gray-500">
+                  📍 Dubai, UAE
+                </span>
+              </div>
+            </div>
+          </div>
+
+          {/* Contact Details Bar */}
+          <div className="bg-white rounded-2xl border border-gray-200 p-6 sm:p-8 shadow-sm flex flex-wrap items-center justify-around gap-6 text-center lg:text-left">
+            <div className="flex items-center gap-3">
+              <div className="w-12 h-12 rounded-full bg-[#FAF9F6] flex items-center justify-center text-[#9c1b63]">
+                <FiPhone className="text-xl" />
+              </div>
+              <div>
+                <p className="text-xs text-gray-500 uppercase tracking-wider font-semibold">Call Us</p>
+                <a href="tel:+971547839880" className="text-sm sm:text-base font-bold text-gray-900 hover:text-[#9c1b63]">
+                  +971 54 783 9880
+                </a>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-3">
+              <div className="w-12 h-12 rounded-full bg-[#FAF9F6] flex items-center justify-center text-[#9c1b63]">
+                <FiMail className="text-xl" />
+              </div>
+              <div>
+                <p className="text-xs text-gray-500 uppercase tracking-wider font-semibold">Email Us</p>
+                <a href="mailto:zaheedfeni47@gmail.com" className="text-sm sm:text-base font-bold text-gray-900 hover:text-[#9c1b63]">
+                  zaheedfeni47@gmail.com
+                </a>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-3">
+              <div className="w-12 h-12 rounded-full bg-[#FAF9F6] flex items-center justify-center text-[#9c1b63]">
+                <FiInstagram className="text-xl" />
+              </div>
+              <div>
+                <p className="text-xs text-gray-500 uppercase tracking-wider font-semibold">Instagram</p>
+                <a 
+                  href="https://www.instagram.com/jahid_curtains" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="text-sm sm:text-base font-bold text-gray-900 hover:text-[#9c1b63]"
+                >
+                  @jahid_curtains
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </section>

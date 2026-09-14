@@ -1,7 +1,6 @@
 "use client";
 
-import React, { useRef, useState } from "react";
-import { FaPlay, FaPause } from "react-icons/fa";
+import React, { useRef, useState, useEffect } from "react";
 
 const videoCards = [
   {
@@ -22,8 +21,24 @@ const videoCards = [
 ];
 
 export default function VideoShowcase() {
-  const [isPlaying, setIsPlaying] = useState<{ [key: number]: boolean }>({});
+  const [isPlaying, setIsPlaying] = useState<{ [key: number]: boolean }>({
+    1: true,
+    2: true,
+    3: true,
+  });
   const videoRefs = useRef<{ [key: number]: HTMLVideoElement | null }>({});
+
+  useEffect(() => {
+    videoCards.forEach((card) => {
+      const video = videoRefs.current[card.id];
+      if (video) {
+        video.play().catch((error) => {
+          console.log("Auto-play was prevented:", error);
+          setIsPlaying((prev) => ({ ...prev, [card.id]: false }));
+        });
+      }
+    });
+  }, []);
 
   const togglePlay = (id: number) => {
     const video = videoRefs.current[id];
@@ -50,7 +65,7 @@ export default function VideoShowcase() {
           CURTAINS IN DUBAI BY JAHED CURTAINS
         </p>
 
-        {/* Video Cards Grid (Mobile Responsive: 1 col on mobile, 3 cols on lg) */}
+        {/* Video Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {videoCards.map((card) => (
             <div key={card.id} className="flex flex-col items-center">
@@ -66,26 +81,17 @@ export default function VideoShowcase() {
                   }}
                   src={card.videoSrc}
                   className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                  autoPlay
+                  muted
                   loop
                   playsInline
                 />
 
-                {/* Dark Overlay Gradient for better contrast */}
-                <div className="absolute inset-0 bg-black/20 hover:bg-black/10 transition-colors" />
-
-                {/* Center Play/Pause Button with #9c1b63 Background */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-14 h-14 sm:w-16 sm:h-16 bg-[#9c1b63]/90 hover:bg-[#9c1b63] text-white rounded-full flex items-center justify-center shadow-lg transition-all transform hover:scale-110">
-                    {isPlaying[card.id] ? (
-                      <FaPause className="text-lg sm:text-xl" />
-                    ) : (
-                      <FaPlay className="text-lg sm:text-xl ml-1" />
-                    )}
-                  </div>
-                </div>
+                {/* Subtle Hover Overlay */}
+                <div className="absolute inset-0 bg-black/0 hover:bg-black/10 transition-colors" />
               </div>
 
-              {/* Card Title (Plain Text - No Link/Pointer events that trigger links) */}
+              {/* Card Title */}
               <h3 className="text-xs sm:text-sm font-bold tracking-wider text-gray-800 uppercase mt-2 select-none">
                 {card.title}
               </h3>

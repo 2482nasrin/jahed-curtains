@@ -9,20 +9,20 @@ const categories = [
   {
     title: "Curtains & Drapes",
     subtitle: "Sheer, day & night and wave styles",
-    image: "/images/curtain-1.png",
-    link: "/products?category=curtains-drapes",
+    image: "/images/curtains-image-1.png",
+    link: "/products?category=curtains-window-solutions",
   },
   {
     title: "Blinds & Shades",
     subtitle: "Roller, roman, zebra & wooden",
-    image: "/images/curtain-2.png",
-    link: "/products?category=blinds-shades",
+    image: "/images/curtains-02.png",
+    link: "/products?category=curtains-window-solutions",
   },
   {
     title: "Motorized",
     subtitle: "Smart curtain systems",
-    image: "/images/curtain-3.png",
-    link: "/products?category=motorized",
+    image: "/furniture/furniture-4.jpeg",
+    link: "/products?category=curtains-window-solutions",
   },
 ];
 

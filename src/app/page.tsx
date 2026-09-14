@@ -9,6 +9,7 @@ import HowItWorksSection from "@/components/home/HowItWorksSection";
 import RecentWorkSection from "@/components/home/RecentWorkSection";
 import TestimonialsSection from "@/components/home/TestimonialsSection";
 import ServiceAreaBlogSection from "@/components/home/ServiceAreaBlogSection";
+import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 
 export default function Home() {
   return (
@@ -31,6 +32,7 @@ export default function Home() {
       <RecentWorkSection />
       <TestimonialsSection />
       <ServiceAreaBlogSection />
+      <FloatingWhatsApp />
     </main>
   );
 }
