@@ -2,12 +2,11 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { FiPhoneCall, FiMail, FiMapPin } from "react-icons/fi";
-import { FaFacebookF, FaWhatsapp, FaInstagram } from "react-icons/fa";
+import { FaWhatsapp, FaInstagram } from "react-icons/fa";
 
 const BOOKING_WHATSAPP_TEXT = encodeURIComponent(
   "Hello Jahed Curtains! I'd like to book a free home visit for curtains or blinds."
 );
-const AREA_WHATSAPP_TEXT = encodeURIComponent("Hello Jahed Curtains! Do you cover my area?");
 
 export default function Footer() {
   return (
@@ -84,17 +83,6 @@ export default function Footer() {
               <div className="pt-2 flex flex-col space-y-3">
                 {/* Social Icons Row */}
                 <div className="flex items-center space-x-3">
-                  {/* Facebook Icon */}
-                  <a
-                    href="https://www.facebook.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-10 h-10 bg-[#1877F2] hover:opacity-90 text-white rounded-full flex items-center justify-center transition-opacity"
-                    aria-label="Facebook"
-                  >
-                    <FaFacebookF className="text-base" />
-                  </a>
-
                   {/* WhatsApp Icon */}
                   <a
                     href={`https://wa.me/971547839880?text=${BOOKING_WHATSAPP_TEXT}`}
@@ -105,7 +93,6 @@ export default function Footer() {
                   >
                     <FaWhatsapp className="text-lg" />
                   </a>
-
                   {/* Instagram Icon */}
                   <a
                     href="https://www.instagram.com/jahid_curtains/"
@@ -219,12 +206,6 @@ export default function Footer() {
                   <a href="tel:+971547839880" className="flex items-center space-x-3 hover:text-[#9c1b63] transition-colors">
                     <FiPhoneCall className="text-[#9c1b63] text-lg flex-shrink-0" />
                     <span>+971 54 783 9880</span>
-                  </a>
-                </li>
-                <li>
-                  <a href={`https://wa.me/971547839880?text=${AREA_WHATSAPP_TEXT}`} target="_blank" rel="noopener noreferrer" className="flex items-center space-x-3 hover:text-[#9c1b63] transition-colors">
-                    <FaWhatsapp className="text-[#25D366] text-lg flex-shrink-0" />
-                    <span>WhatsApp us</span>
                   </a>
                 </li>
                 <li>
