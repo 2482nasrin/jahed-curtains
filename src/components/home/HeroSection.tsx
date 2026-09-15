@@ -21,7 +21,7 @@ export default function HeroSection() {
         playsInline
         className="absolute inset-0 w-full h-full object-cover z-0"
       >
-        <source src="https://media.antonovich-design.ae/themes/default/app/video/antonovich-group-curtains-villa-walkthrough-dubai-2026-av1-8bit.mp4" />
+        <source src="videos/jahed-curtains-top-video.mp4" />
         Your browser does not support the video tag.
       </video>
 

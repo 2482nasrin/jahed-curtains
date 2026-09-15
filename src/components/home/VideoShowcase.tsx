@@ -6,17 +6,17 @@ const videoCards = [
   {
     id: 1,
     title: "BESPOKE CURTAIN SERVICE",
-    videoSrc: "/videos/Sheer Curtains for Dining Room in Dubai – Elegant & Modern Window Styling.mp4",
+    videoSrc: "/videos/group-curtains-dubai-4-2026.mp4",
   },
   {
     id: 2,
     title: "CURTAINS IN A FINISHED VILLA",
-    videoSrc: "https://media.antonovich-design.ae/themes/default/app/video/antonovich-group-curtains-villa-walkthrough-dubai-2026-av1-8bit.mp4",
+    videoSrc: "/videos/group-curtains-dubai-1-2026.mp4",
   },
   {
     id: 3,
     title: "DRAPES AND TIEBACKS",
-    videoSrc: "https://media.antonovich-design.ae/themes/default/app/video/antonovich-group-curtains-tassel-tiebacks-dubai-2026.mp4",
+    videoSrc: "/videos/group-curtains-dubai-2-2026.mp4",
   },
 ];
 
