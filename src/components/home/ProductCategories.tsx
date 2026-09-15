@@ -21,7 +21,7 @@ const categories = [
   {
     title: "Motorized",
     subtitle: "Smart curtain systems",
-    image: "/furniture/furniture-4.png",
+    image: "/images/curtains-image-2.jpeg",
     link: "/products?category=curtains-window-solutions",
   },
 ];
