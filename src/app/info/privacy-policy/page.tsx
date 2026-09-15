@@ -9,7 +9,7 @@ import { buildMetadata } from "@/lib/seo";
 export const metadata: Metadata = buildMetadata({
   title: "Privacy Policy",
   description:
-    "Learn how Jahed Curtains collects, uses and protects your personal information when you request a quote, book a home visit or contact us through our website.",
+    "How Jahed Curtains collects, uses and protects your personal information when you request a quote, book a home visit or contact us via our website.",
   path: "/info/privacy-policy",
 });
 

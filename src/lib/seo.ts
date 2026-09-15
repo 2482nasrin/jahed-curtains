@@ -15,7 +15,7 @@ type PageMetaInput = {
   absoluteTitle?: boolean;
 };
 
-const MAX_DESCRIPTION = 160;
+const MAX_DESCRIPTION = 155;
 const DESCRIPTION_SUFFIXES = [
   " Free home visit, measurement and installation across Dubai, Sharjah and Abu Dhabi.",
   " Free home visit and installation in the UAE.",
@@ -24,7 +24,7 @@ const DESCRIPTION_SUFFIXES = [
 
 /**
  * Pads a short catalogue/blog description with a call to action so meta
- * descriptions land in the recommended 120-160 character range, without
+ * descriptions land in the recommended 120-155 character range, without
  * ever exceeding the limit.
  */
 export function withSeoSuffix(description: string): string {

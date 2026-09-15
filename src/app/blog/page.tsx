@@ -8,7 +8,7 @@ import { buildMetadata } from "@/lib/seo";
 export const metadata: Metadata = buildMetadata({
   title: "Blog | Curtain & Blind Guides for UAE",
   description:
-    "Practical guides on blackout curtains, sheer curtains, blinds and motorized curtains for UAE homes. Tips on fabrics, sizing, styles and prices from Jahed Curtains.",
+    "Practical guides on blackout curtains, sheer curtains, blinds and motorized curtains for UAE homes. Tips on fabrics, sizing, styles and prices.",
   path: "/blog",
 });
 

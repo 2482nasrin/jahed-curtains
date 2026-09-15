@@ -9,7 +9,7 @@ import { buildMetadata } from "@/lib/seo";
 export const metadata: Metadata = buildMetadata({
   title: "About Us | Curtains Made Simple",
   description:
-    "Jahed Curtains fits made-to-measure curtains and blinds for homes and offices across Dubai, Sharjah and Abu Dhabi with free home visits and our own installation team.",
+    "Jahed Curtains fits made-to-measure curtains and blinds for homes and offices in Dubai, Sharjah and Abu Dhabi. Free home visits and our own installers.",
   path: "/about",
 });
 

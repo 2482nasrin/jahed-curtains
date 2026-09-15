@@ -9,7 +9,7 @@ import { buildMetadata } from "@/lib/seo";
 export const metadata: Metadata = buildMetadata({
   title: "Official Trade License Info",
   description:
-    "View Jahed Curtains' official trade license and registered company details in the UAE. We are a licensed curtain and blind supplier and installer in Abu Dhabi.",
+    "View Jahed Curtains' official trade license and registered company details in the UAE. A licensed curtain and blind supplier and installer in Abu Dhabi.",
   path: "/trade-license",
 });
 

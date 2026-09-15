@@ -9,7 +9,7 @@ import { buildMetadata } from "@/lib/seo";
 export const metadata: Metadata = buildMetadata({
   title: "Payment Terms",
   description:
-    "Read the payment terms for Jahed Curtains orders, including when payment is due, accepted methods and how quotes work for made-to-measure curtains and blinds.",
+    "Payment terms for Jahed Curtains orders, including when payment is due, accepted methods and how quotes work for made-to-measure curtains and blinds.",
   path: "/info/payment-terms",
 });
 

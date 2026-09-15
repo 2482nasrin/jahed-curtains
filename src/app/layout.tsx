@@ -8,7 +8,7 @@ import LocalBusinessSchema from "@/components/seo/LocalBusinessSchema";
 
 const HOME_TITLE = "Jahed Curtains | Made-to-Measure Curtains & Blinds in UAE";
 const HOME_DESCRIPTION =
-  "Made-to-measure curtains, blinds and motorized curtains for homes and offices in Dubai, Sharjah and Abu Dhabi. Free home visit, measurement and installation.";
+  "Made-to-measure curtains, blinds and motorized curtains for homes and offices in Dubai, Sharjah and Abu Dhabi. Free home visit, measuring and installation.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

@@ -9,7 +9,7 @@ import { buildMetadata } from "@/lib/seo";
 export const metadata: Metadata = buildMetadata({
   title: "Delivery Information",
   description:
-    "How Jahed Curtains delivers and installs your curtains and blinds across Dubai, Sharjah and Abu Dhabi, including lead times, scheduling and installation details.",
+    "How Jahed Curtains delivers and installs curtains and blinds across Dubai, Sharjah and Abu Dhabi, including lead times, scheduling and installation.",
   path: "/info/delivery-information",
 });
 

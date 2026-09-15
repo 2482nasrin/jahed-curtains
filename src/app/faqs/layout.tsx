@@ -4,7 +4,7 @@ import { buildMetadata } from "@/lib/seo";
 export const metadata: Metadata = buildMetadata({
   title: "Frequently Asked Questions",
   description:
-    "Answers to common questions about our curtains and blinds: pricing, free home visits, measurement, installation time, fabrics, payment and after-sales support.",
+    "Answers to common questions about our curtains and blinds: pricing, free home visits, measuring, installation time, fabrics, payment and aftercare.",
   path: "/faqs",
 });
 

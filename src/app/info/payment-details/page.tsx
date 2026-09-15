@@ -9,7 +9,7 @@ import { buildMetadata } from "@/lib/seo";
 export const metadata: Metadata = buildMetadata({
   title: "Payment Details",
   description:
-    "Accepted payment methods at Jahed Curtains: cash, bank transfer and card. No advance payment is required; you pay after your curtains or blinds are installed.",
+    "Accepted payment methods at Jahed Curtains: cash, bank transfer and card. No advance payment; you pay after your curtains or blinds are installed.",
   path: "/info/payment-details",
 });
 

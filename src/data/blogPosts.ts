@@ -108,7 +108,7 @@ export const blogPosts: BlogPost[] = [
     timeAgo: "2 months ago",
     image: "/products/roman-blinds-dubai.png",
     category: "Buying Guide",
-    title: "How to Choose Curtains & Blinds in Dubai, Sharjah & Abu Dhabi",
+    title: "Choosing Curtains & Blinds in Dubai, Sharjah & Abu Dhabi",
     description:
       "Sheer, blackout, roller, zebra, roman or wooden? A simple room-by-room method for picking the right treatment for UAE light.",
     author: AUTHOR,
@@ -289,7 +289,7 @@ export const blogPosts: BlogPost[] = [
     timeAgo: "4 months ago",
     image: "/images/work-installaer.png",
     category: "Curtains",
-    title: "How to Hang Curtains Without Drilling: A Renter-Friendly Guide",
+    title: "How to Hang Curtains Without Drilling: A Renter's Guide",
     description:
       "Tension rods, adhesive brackets and other landlord-approved ways to hang real curtains in a rented apartment.",
     author: AUTHOR,

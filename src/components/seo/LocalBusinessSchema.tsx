@@ -9,7 +9,7 @@ const schema = {
   logo: `${SITE_URL}/logo1.png`,
   image: `${SITE_URL}${DEFAULT_OG_IMAGE}`,
   description:
-    "Made-to-measure curtains, blinds and motorized curtains for homes and offices in Dubai, Sharjah and Abu Dhabi. Free home visit, measurement and installation.",
+    "Made-to-measure curtains, blinds and motorized curtains for homes and offices in Dubai, Sharjah and Abu Dhabi. Free home visit, measuring and installation.",
   telephone: "+971547839880",
   email: "zaheedfeni47@gmail.com",
   priceRange: "$$",
