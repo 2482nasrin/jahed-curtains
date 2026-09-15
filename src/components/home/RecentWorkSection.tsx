@@ -24,7 +24,7 @@ export default function RecentWorkSection() {
     { id: 11, category: "Sofa", image: "sofa/sofa-3.jpeg" },
     { id: 12, category: "Sofa", image: "sofa/sofa-4.jpeg" },
     { id: 13, category: "Sofa", image: "sofa/sofa-5.jpeg" },
-    { id: 14, category: "Sofa", image: "sofa/sofa-6.jpeg" },
+    { id: 14, category: "Sofa", image: "sofa/sofa-6.png" },
     { id: 15, category: "Sofa", image: "sofa/sofa-7.jpeg" },
     { id: 16, category: "Sofa", image: "sofa/sofa-8.jpeg" },
 
